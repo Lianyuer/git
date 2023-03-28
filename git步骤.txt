@@ -1,0 +1,47 @@
+1. git bash
+2. git status  查看状态      git status -s 简略查看状态   未跟踪
+3. git add 文件名  将文件提交到暂存区   已跟踪  绿色的A 绿色的M
+4. git commit -m "提交消息" 提交已暂存的文件 到 Git仓库
+5. 对已提交的文件进行了修改，但没有放入暂存区， 再 git status 查看状态会变为已修改的红色 M
+6. 再次 git add 文件名 把已跟踪、且已修改的文件放入暂存区   绿色的A 绿色的M
+7. git commit -m "提交消息" 提交已暂存的文件 到 Git仓库
+8. git status  查看状态     变为 Unmodified 
+
+9.   git checkout -- 文件名   撤销对文件的修改
+
+10. git add . 把所有新增和已修改的文件放入暂存区
+11. git reset HEAD 文件名  把文件从暂存区移除
+12. git reset HEAD .  把所有文件从暂存区移除
+
+13. 工作区-->暂存区-->Git仓库  跳过使用暂存区 git commit -a -m "描述消息"
+14. 移除文件：
+·   从 Git 仓库和工作区中同时移除对应的文件  git rm -f 文件名
+·   只从 Git 仓库中移除文件，但保留工作区中的 文件 git rm --cached 文件名
+
+15.  git log 按时间先后顺序列出所有提交历史，最近的提交排在最上面 
+     git log -2  只展示最新两条提交历史
+     git log -2 --pretty=oneline 在一行上显示最近两条提交历史
+     git log -2 -- pretty=format:"%h | %an |%ar |%s" %h 提交的简写哈希值 %an作者名字 %ar作者修订日期，按多久以前的方式显示  %s提交说明 
+
+16. git log --pretty=oneline 在一行上显示所有的提交历史 
+17.  git reset --hard <CommitID> 根据指定的提交ID 回退到指定版本
+18. git reflog --pretty=oneline 在旧版本中，查看命令操作的历史
+19. git reset --hard <CommitID> 再次根据最新的提交 ID，跳转到最新版本
+
+
+
+echo "# VoiceEmoRec" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Lianyuer/VoiceEmoRec.git
+git push -u origin main
+只有第一次推送才需要    git push -u origin main
+以后的推送只需    git push
+
+
+git branch 查看分支
+git branch 分支名称     基于当前所处分支创建分支
+git checkout 分支名称    切换分支
+git checkout -b 分支名称    快速创建并切换分支
