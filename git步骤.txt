@@ -28,6 +28,19 @@
 18. git reflog --pretty=oneline 在旧版本中，查看命令操作的历史
 19. git reset --hard <CommitID> 再次根据最新的提交 ID，跳转到最新版本
 
+git branch                  查看分支
+git branch 分支名称         基于当前所处分支创建分支
+git checkout 分支名称       切换分支
+git checkout -b 分支名称    快速创建并切换分支
+git merge 分支名称                    在 main 分支上运行 git merge 命令，将 分支代码合并到main分支
+git branch -d 分支名称            删除分支
+
+假设：在把 reg 分支 合并到 main 分支期间。代码发生了冲突
+git checkout main
+git merge reg
+打开包含冲突的文件，手动解决冲突之后，再执行如下命令：
+git add .
+git commit -m "解决了分支合并冲突的问题"
 
 
 echo "# VoiceEmoRec" >> README.md
@@ -38,10 +51,50 @@ git branch -M main
 git remote add origin https://github.com/Lianyuer/VoiceEmoRec.git
 git push -u origin main
 只有第一次推送才需要    git push -u origin main
-以后的推送只需    git push
+以后的推送只需          git push
+
+# -u 表示把本地分支和远程分支进行关联，只在第一次推送的时候需要带 -u 参数
+git push -u 远程仓库的别名 本地分支名称:远程分支名称
+# 实际案例
+git push -u origin payment:pay
+
+# 如果希望远程分支的名称和本地分支名称保持一致，可以对命令进行简化：
+git push -u origin payment
+
+git remote show 远程仓库名称              查看远程仓库所有分支列表
+
+# 从远程仓库中，把对应的远程分支下载到本地仓库，保持本地分支和远程分支名称相同
+git checkout 远程分支的名称
+示例：
+git checkout pay
+
+# 从远程仓库中，把对应的远程分支下载到本地仓库，并把下载的本地分支进行重命名
+git checkout -b 本地分支名称 远程仓库名称/远程分支名称
+# 示例
+git checkout -b payment origin/pay
+
+# 从远程仓库，拉取当前分支最新的代码，保持当前分支的代码和远程分支代码一致
+git pull
+
+# 删除远程仓库中，指定名称的远程分支   注意区分删除本地分支： git branch -d 分支名称
+git push 远程仓库名称 --delete 远程分支名称
+# 示例：
+git push origin --delete pay
 
 
-git branch 查看分支
-git branch 分支名称     基于当前所处分支创建分支
-git checkout 分支名称    切换分支
-git checkout -b 分支名称    快速创建并切换分支
+总结：
+① 能够掌握 Git 中基本命令的使用
+     ·   git init
+     ·   git add .
+     ·   git commit -m "提交消息" 
+     ·   git status 和 git status-s
+② 能够使用 Github 创建和维护远程仓库
+     ·   能够配置 Github 的SSH访问
+     ·   能够将本地仓库上传到 Github
+
+③ 能够掌握 Git 中基本命令的使用
+     ·   git checkout -b 新分支名称
+     ·   git push -u origin 新分支名称
+     ·   git checkout 分支名称
+     ·   git branch
+
