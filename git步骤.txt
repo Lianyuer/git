@@ -74,7 +74,7 @@ git checkout -b 本地分支名称 远程仓库名称/远程分支名称
 git checkout -b payment origin/pay
 
 # 从远程仓库，拉取当前分支最新的代码，保持当前分支的代码和远程分支代码一致
-git pull
+git pull  远程分支名  本地分支名
 
 # 删除远程仓库中，指定名称的远程分支   注意区分删除本地分支： git branch -d 分支名称
 git push 远程仓库名称 --delete 远程分支名称
