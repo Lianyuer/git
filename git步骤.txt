@@ -16,7 +16,7 @@
 13. 工作区-->暂存区-->Git仓库  跳过使用暂存区 git commit -a -m "描述消息"
 14. 移除文件：
 ·   从 Git 仓库和工作区中同时移除对应的文件  git rm -f 文件名
-·   只从 Git 仓库中移除文件，但保留工作区中的 文件 git rm --cached 文件名
+·   只从 Git 仓库中移除文件，但保留工作区中的 文件 git rm -r --cached 文件名
 
 15.  git log 按时间先后顺序列出所有提交历史，最近的提交排在最上面 
      git log -2  只展示最新两条提交历史
@@ -47,7 +47,7 @@ echo "# VoiceEmoRec" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git branch -M main
+git branch -M main 用于将本地分支 main 重命名为 main。这个命令通常用于将本地分支 main 与远程分支 main 保持一致，或者在创建新的本地分支时，需要将本地分支名称设置为 main
 git remote add origin https://github.com/Lianyuer/VoiceEmoRec.git
 git push -u origin main
 只有第一次推送才需要    git push -u origin main
@@ -97,6 +97,9 @@ git push origin --delete pay
      ·   git push -u origin 新分支名称
      ·   git checkout 分支名称
      ·   git branch
+     ·   git reset HEAD 要移除的文件名称 【移除全部文件用 git reset HEAD .】
+     ·   只从 Git 仓库中移除文件，但保留工作区中的 文件 git rm -r --cached 文件名
+
 
 
 如果先把代码git到了gitee上，然后再要git到github，会报错 error: remote origin already exists.
